@@ -1,8 +1,7 @@
-import { View, Text } from 'react-native';
-import styles from './styles';
+import { Text } from 'react-native';
 import { useFonts } from 'expo-font';
-import MainNavigation from './src/navigation/MainNavigation';
-
+import BottomTabNavigation from './src/navigation/BottomTabNavigation';
+import { NavigationContainer } from '@react-navigation/native';
 export default function App() {
 
   const [loaded] = useFonts({
@@ -15,8 +14,10 @@ export default function App() {
 
 
   return (
-    <View style={styles.container}>
-      <MainNavigation/>
-    </View>
+    <NavigationContainer>
+
+      <BottomTabNavigation/>
+
+    </NavigationContainer>
   );
 }
