@@ -1,48 +1,56 @@
 import { StyleSheet } from "react-native"
 import { colors } from '../../assets/styling/colors/Colors';
 const styles = StyleSheet.create({
-    text:{
-        fontFamily: 'outfit',
-        fontWeight:'bold',
-        fontSize: 30,
-        padding:0,
-        marginBottom:30,
-    },
-    background:{
-        flex:1,
-        alignItems:'center',
+    main_container:{
+        flex: 0,
         justifyContent:'center',
-        backgroundColor:'transparent',
+        alignItems:'center',
         width:'100%',
-        height:'100%'
+        height:'100%',
     },
     video:{
         alignSelf:'center',
         width:'100%',
         height:'100%',
-        position:'relative',
+        position:'absolute',
     },
-    loginContainer: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor:'white',
-    },
-    modalView: {
-        flex: 1,
+    cardContainer:{
         justifyContent: 'center',
         alignItems: 'center',
-        maxHeight:300,
-
-        margin:40,
-        backgroundColor: 'white',
-        width: '80%',
+        backgroundColor:colors.white,
+        marginTop:300,
+        padding:10,
+        width: '85%',
+        height: '40%',
         borderRadius: 10,
         padding: 20,
         shadowColor: '#000',
         shadowOffset: {
-            width: 1,
-            height: 2,
-        }
-    }
+            width: 0,
+            height: 1,
+        },
+    },
+    text:{
+        fontFamily: 'outfit',
+        fontWeight:600,
+        fontSize: 30,
+        padding:0,
+        marginBottom:30,
+    },
+    input:{
+        fontFamily:'outfit',
+        width:'100%',
+        padding:10,
+        margin:20,
+        textAlign:'center',
+        justifyContent:'center',
+        alignItems:'center',
+        borderBottomWidth:2,
+        borderBottomColor:colors.darkpurple,
+        color:colors.lightpurple
+    },
+    button:{
+
+    },
 })
 export default styles;

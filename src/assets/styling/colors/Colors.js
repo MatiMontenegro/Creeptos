@@ -5,6 +5,7 @@ const principalTheme = {
     //We'll create colors Pallette.
         export const colors = {
             // ...defaultTheme.colors,
+            white:'white',
             lightpink:'#E91E63',
             darkpink:'#C218SB',
             lightpurple:'#9C27B0',

@@ -2,6 +2,8 @@ import { Text } from 'react-native';
 import { useFonts } from 'expo-font';
 import BottomTabNavigation from './src/navigation/BottomTabNavigation';
 import { NavigationContainer } from '@react-navigation/native';
+import Api from './src/components/API';
+
 export default function App() {
 
   const [loaded] = useFonts({
@@ -14,10 +16,8 @@ export default function App() {
 
 
   return (
-    <NavigationContainer>
-
+    <NavigationContainer screenOptions={{headerShown:false}}>
       <BottomTabNavigation/>
-
     </NavigationContainer>
   );
 }
