@@ -1,66 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { View, TextInput, Button, Text } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCryptoWalletData, addLocalCurrency, buyCrypto, exchangeCrypto, extractLocalCurrency, convertCryptoToCurrency } from '../../store/Actions';
 
 const CoinWallet = () => {
-  const [localCurrency, setLocalCurrency] = useState(0);
-  const [cryptoWallet, setCryptoWallet] = useState([]);
+  const localCurrency = useSelector(state => state.localCurrency);
+  const cryptoWallet = useSelector(state => state.cryptoWallet);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // Fetch and update crypto wallet data from API
-    fetchCryptoWalletData();
-  }, []);
-
-  const fetchCryptoWalletData = async () => {
-    try {
-      // Make API request to fetch crypto wallet data
-      const response = await fetch('https://api.coingecko.com/api/v3/your-crypto-wallet-data-endpoint');
-      const data = await response.json();
-      setCryptoWallet(data);
-    } catch (error) {
-      console.log('Error fetching crypto wallet data:', error);
-    }
-  };
+    dispatch(fetchCryptoWalletData());
+  }, [dispatch]);
 
   const handleAddLocalCurrency = (amount) => {
     if (amount > 0) {
-      setLocalCurrency(localCurrency + amount);
+      dispatch(addLocalCurrency(amount));
     }
   };
 
   const handleBuyCrypto = (cryptoId, amount) => {
     if (amount > 0 && localCurrency >= amount) {
-      // Perform logic to buy crypto with local currency
-      // Deduct the amount from local currency and add crypto to the wallet
-      setLocalCurrency(localCurrency - amount);
-      setCryptoWallet([...cryptoWallet, { id: cryptoId, amount }]);
+      dispatch(buyCrypto(cryptoId, amount));
     }
   };
 
   const handleExchangeCrypto = (fromCryptoId, toCryptoId, amount) => {
-    // Perform logic to exchange one crypto for another
-    // Subtract the amount from the 'from' crypto and add the corresponding amount to the 'to' crypto
-    // Update the crypto wallet state accordingly
-    // Make sure to handle validation and edge cases
-
-    console.log(`Exchanging ${amount} ${fromCryptoId} for ${toCryptoId}`);
+    dispatch(exchangeCrypto(fromCryptoId, toCryptoId, amount));
   };
 
   const handleExtractLocalCurrency = (amount) => {
     if (amount > 0 && localCurrency >= amount) {
-      setLocalCurrency(localCurrency - amount);
-      // Perform logic to extract local currency (e.g., transfer to bank account)
-      console.log(`Extracted ${amount} local currency`);
+      dispatch(extractLocalCurrency(amount));
     }
   };
 
   const handleConvertCryptoToCurrency = (cryptoId, amount) => {
-    // Perform logic to convert crypto coins into the value of the local currency
-    // Use the CoinGecko API to get the current price of the crypto coin
-    // Multiply the amount by the current price to calculate the value in local currency
-    // Update the local currency state accordingly
-    // Make sure to handle validation and edge cases
-
-    console.log(`Converting ${amount} ${cryptoId} to local currency`);
+    dispatch(convertCryptoToCurrency(cryptoId, amount));
   };
 
   return (
