@@ -1,8 +1,12 @@
-import { createStoreHook, combineReducers } from "react-redux";
+import { createStore, combineReducers } from 'redux';
+import localWalletReducer from './Reducers/localWalletReducer';
+import cryptoWalletReducer from './Reducers/cryptoWalletReducer';
 
-createStoreHook
+const rootReducer = combineReducers({
+  localWallet: localWalletReducer,
+  cryptoWallet: cryptoWalletReducer,
+});
 
-const RootReducer = combineReducers({
-localWallet : localWalletReducer,
-cryptoWallet: cryptoWalletReducer
-})
+const store = createStore(rootReducer);
+
+export default store;

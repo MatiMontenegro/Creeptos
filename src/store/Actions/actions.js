@@ -20,3 +20,27 @@ return async (dispatch) => {
     }
 }
 }
+
+// export const addLocalCurrency=(amount)=>{
+//   dispatch({type: ADD_LOCAL_CURRENCY, payload: amount})
+// }
+
+// export const extractLocalCurrency=(amount)=>{
+//   if(localWallet > 0 && amount > 0){
+//     localWallet -= amount
+//     dispatch({type: EXTRACT_LOCAL_CURRENCY, payload: amount})
+//   }
+// }
+
+// export const buyCrypto = (amount) =>{
+//   if (localWallet >= 0 && amount > 0){
+//     localWallet -= amount
+//   dispatch({type : BUY_CRYPTO, payload: localWallet})
+//   }
+// }
+
+// export const exchange_crypto = (cryptoWallet, cryptoValue) =>{
+//   if (cryptoWallet > 0 && cryptoValue > 0){
+//     dispatch({type: EXCHANGE_CRYPTO, payload: cryptoValue})
+//   }
+// }

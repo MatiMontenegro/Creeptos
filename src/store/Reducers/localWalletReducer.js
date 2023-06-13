@@ -3,7 +3,7 @@ const initialState = {
     amount: 0
 };
 
-const localCurrencyReducer = (state = initialState, action) => {
+const localWalletReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'SET_CURRENCY':
             return {
@@ -20,4 +20,4 @@ const localCurrencyReducer = (state = initialState, action) => {
     }
 };
 
-export default localCurrencyReducer;
+export default localWalletReducer;
